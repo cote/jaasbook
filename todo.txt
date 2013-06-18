@@ -1,0 +1,10 @@
+We now list the users and their groups.
+
+So, next you should be able to click on a user, and select if the user
+is an admin and/or a user.
+
+This should be enough to write the chapter.
+
+Then, we'll add in a permission for each note, and admins can assign
+permissions to users for notes. So, we'll see restricting viewing a
+note based on what permissions the user has.

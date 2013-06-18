@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<struts-config>
+
+    <form-beans>
+        <form-bean
+            name="notesForm"
+            type="chp11.ListNotesForm"/>
+
+        <form-bean
+            name="noteForm"
+            type="chp11.NoteForm"/>
+
+        <form-bean
+            name="deleteForm"
+            type="chp11.DeleteNotesForm"/>
+        
+        <form-bean
+            name="listUsersForm"
+            type="chp11.ListUsersForm"/>    
+            
+        <form-bean
+            name="editUserForm"
+            type="chp11.EditUserForm"/>    
+    </form-beans>
+
+    <global-exceptions>
+        <!-- sample exception handler
+        <exception
+            key="expired.password"
+            type="app.ExpiredPasswordException"
+            path="/changePassword.jsp"/>
+        end sample -->
+    </global-exceptions>
+
+    <global-forwards>
+        <!-- Default forward to "Welcome" action -->
+        <!-- Demonstrates using index.jsp to forward -->
+        <forward
+            name="welcome"
+            path="index.jsp"/>
+    </global-forwards>
+
+    <action-mappings>
+
+       <action path="/list-users"
+               name="listUsersForm"
+               scope="request"
+               type="chp11.ListUsersAction">
+         <forward name="success" path=".list.users"/>
+       </action>
+
+        <action path="/edit-user"
+                name="editUserForm"
+                scope="request"
+                type="chp11.EditUserAction">
+          <forward name="success" path=".edit.user"/>
+        </action>
+        
+        <action path="/save-user"
+                name="editUserForm"
+                scope="request"
+                type="chp11.SaveUserAction">
+          <forward name="success" path="/list-users.do"/>
+        </action>
+        
+        <action path="/add-note"
+                name="notesForm"
+                scope="request"
+                type="org.apache.struts.actions.ForwardAction"
+                parameter=".edit.page"/>
+
+        <action
+            path="/list-notes"
+            type="chp11.ListNotesAction"
+            name="notesForm"
+            scope="request"
+            input=".list.page"/>
+
+        <action
+            path="/view-note"
+            type="chp11.LoadNoteAction"
+            name="noteForm"
+            validate="false"
+            scope="request">
+          <forward name="success" path=".view.page"/>
+        </action>
+
+        <action
+            path="/delete-notes"
+            type="chp11.DeleteNotesAction"
+            name="deleteForm"
+            scope="request"
+            input="/list-notes.do"/>
+
+        <action
+            path="/edit-note"
+            type="chp11.LoadNoteAction"
+            name="noteForm"
+            validate="false"
+            scope="request">
+           <forward name="success" path=".edit.page"/>
+         </action>
+
+        <action
+            path="/save-note"
+            type="chp11.SaveNoteAction"
+            name="noteForm"
+            scope="request"
+            input=".edit.page">
+           <forward name="success" path=".view.page"/>
+        </action>
+
+    </action-mappings>
+
+
+    <controller
+       processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
+
+    <message-resources parameter="NotepadResources" />
+
+
+  <!-- ======================================================= Tiles plugin -->
+  <!--
+     This plugin initialize Tiles definition factory. This later can takes some
+	 parameters explained here after. The plugin first read parameters from
+	 web.xml, thenoverload them with parameters defined here. All parameters
+	 are optional.
+     The plugin should be declared in each struts-config file.
+       - definitions-config: (optional)
+            Specify configuration file names. There can be several comma
+		    separated file names (default: ?? )
+       - moduleAware: (optional - struts1.1)
+            Specify if the Tiles definition factory is module aware. If true
+            (default), there will be one factory for each Struts module.
+			If false, there will be one common factory for all module. In this
+            later case, it is still needed to declare one plugin per module.
+            The factory will be initialized with parameters found in the first
+            initialized plugin (generally the one associated with the default
+            module).
+			  true : One factory per module. (default)
+			  false : one single shared factory for all modules
+	   - definitions-parser-validate: (optional)
+	        Specify if xml parser should validate the Tiles configuration file.
+			  true : validate. DTD should be specified in file header (default)
+			  false : no validation
+
+	  Paths found in Tiles definitions are relative to the main context.
+  -->
+
+    <plug-in className="org.apache.struts.tiles.TilesPlugin" >
+
+      <!-- Path to XML definition file -->
+      <set-property property="definitions-config"
+                       value="/WEB-INF/tiles-defs.xml" />
+      <!-- Set Module-awareness to true -->
+      <set-property property="moduleAware" value="true" />
+    </plug-in>
+
+  <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+    <set-property
+        property="pathnames"
+        value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+  </plug-in>
+
+</struts-config>
+

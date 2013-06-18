@@ -1,0 +1,5 @@
+<p><b>Session:</b><br/>
+<c:forEach items="${sessionScope}" var="entry">
+${entry.key} = ${entry.value}<br/>
+</c:forEach>
+</p>

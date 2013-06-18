@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN" "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+<taglib>
+  <tlibversion>1.0</tlibversion>
+  <jspversion>1.1</jspversion>
+  <shortname>auth</shortname>
+  <uri>/WEB-INF/perm-tags.tld</uri>
+  <tag>
+    <name>granted</name>
+    <tagclass>chp10.GrantedPermissionTag</tagclass>
+    <bodycontent>JSP</bodycontent>
+    <attribute>
+      <name>type</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>name</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>actions</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>  
+  <tag>
+    <name>notGranted</name>
+    <tagclass>chp10.NotGrantedPermissionTag</tagclass>
+    <bodycontent>JSP</bodycontent>
+    <attribute>
+      <name>type</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>name</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>actions</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>  
+</taglib>

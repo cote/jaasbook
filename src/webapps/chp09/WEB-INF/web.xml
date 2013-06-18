@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+         version="2.4">
+  <display-name>jaas-book</display-name>
+  <description>JAAS Book, Chapter 9</description>
+
+  <filter>
+   <filter-name>authentication-filter</filter-name>
+   <filter-class>chp10.AuthenticationFilter</filter-class>
+   <init-param>
+    <param-name>app-name</param-name>
+    <param-value>chp09</param-value>
+   </init-param>
+  </filter>
+
+  <filter-mapping>
+   <filter-name>authentication-filter</filter-name>
+   <url-pattern>/j_security_check</url-pattern>
+  </filter-mapping>
+
+  <servlet>
+    <servlet-name>InitServlet</servlet-name>
+    <servlet-class>chp09.StartupServlet</servlet-class>
+    <load-on-startup>0</load-on-startup>
+  </servlet>
+  
+   <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+   </welcome-file-list>
+
+  <error-page>
+    <error-code>403</error-code>
+    <location>/access-denied.jsp</location>
+  </error-page>
+
+  <taglib>
+    <taglib-uri>auth-tags</taglib-uri>
+    <taglib-location>/WEB-INF/auth-tags.tld</taglib-location>
+  </taglib>
+
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Admin Page (Chp09)</web-resource-name>
+      <url-pattern>/admin/*</url-pattern>
+      </web-resource-collection>
+    <auth-constraint>
+       <role-name>admin</role-name>
+    </auth-constraint>
+  </security-constraint>
+
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Customer Page (Chp09)</web-resource-name>
+      <url-pattern>/customer/*</url-pattern>
+      </web-resource-collection>
+    <auth-constraint>
+       <role-name>customer</role-name>
+    </auth-constraint>
+  </security-constraint>
+
+  <login-config>
+    <auth-method>FORM</auth-method>
+    <realm-name>Chp09 Realm</realm-name>
+    <form-login-config>
+     <form-login-page>/login.jsp</form-login-page>
+     <form-error-page>/login-error.jsp</form-error-page>
+    </form-login-config>
+  </login-config>
+ 
+  <security-role>
+    <description>
+      Role required to see admin pages.
+    </description>
+    <role-name>admin</role-name>
+  </security-role>
+
+  <security-role>
+    <description>
+      Role required to see customer pages.
+    </description>
+    <role-name>customer</role-name>
+  </security-role>
+
+</web-app>

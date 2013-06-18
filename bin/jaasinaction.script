@@ -1,0 +1,575 @@
+CREATE USER SA PASSWORD "" ADMIN
+/*C1*/CONNECT USER sa PASSWORD ""
+SET AUTOCOMMIT FALSE
+COMMIT
+CREATE TABLE app_configuration ( appName varchar(32) NOT NULL, loginModuleClass varchar(256) NOT NULL, controlFlag varchar(10) )
+CREATE TABLE db_user ( id varchar(64) NOT NULL, username varchar(32) NOT NULL, password varchar(32), PRIMARY KEY ( id ) )
+ALTER TABLE db_user ADD CONSTRAINT db_user_username UNIQUE (username)
+CREATE TABLE principal ( id varchar(64) NOT NULL, name varchar(32) NOT NULL, class varchar(256) NOT NULL, PRIMARY KEY ( id ) )
+CREATE TABLE principal_db_user ( user_id varchar(32) NOT NULL, principal_id varchar(32) NOT NULL )
+COMMIT
+INSERT INTO DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','mcote','secret')
+INSERT INTO PRINCIPAL VALUES('b8632f3f-3a76-11d9-a885-f556d67c71cf','sysadmin','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','b8632f3f-3a76-11d9-a885-f556d67c71cf')
+INSERT INTO PRINCIPAL VALUES('c6434772-3a76-11d9-8947-852cf9d745d1','users','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','c6434772-3a76-11d9-8947-852cf9d745d1')
+INSERT INTO PRINCIPAL VALUES('d0c25a3a-3a76-11d9-b23a-bb17b6deeb22','austin-lab','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','d0c25a3a-3a76-11d9-b23a-bb17b6deeb22')
+COMMIT
+COMMIT
+CONNECT USER sa PASSWORD ""
+SET AUTOCOMMIT FALSE
+CONNECT USER sa PASSWORD ""
+SET AUTOCOMMIT FALSE
+drop table app_configuration
+drop table principal_db_user
+drop table db_user
+drop table principal
+COMMIT
+CREATE TABLE app_configuration ( appName varchar(32) NOT NULL, loginModuleClass varchar(256) NOT NULL, controlFlag varchar(10) )
+CREATE TABLE db_user ( id varchar(64) NOT NULL, username varchar(32) NOT NULL, password varchar(32), PRIMARY KEY ( id ) )
+ALTER TABLE db_user ADD CONSTRAINT db_user_username UNIQUE (username)
+CREATE TABLE principal ( id varchar(64) NOT NULL, name varchar(32) NOT NULL, class varchar(256) NOT NULL, PRIMARY KEY ( id ) )
+CREATE TABLE principal_db_user ( user_id varchar(32) NOT NULL, principal_id varchar(32) NOT NULL )
+COMMIT
+INSERT INTO DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','mcote','secret')
+INSERT INTO PRINCIPAL VALUES('b8632f3f-3a76-11d9-a885-f556d67c71cf','sysadmin','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','b8632f3f-3a76-11d9-a885-f556d67c71cf')
+INSERT INTO PRINCIPAL VALUES('c6434772-3a76-11d9-8947-852cf9d745d1','users','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','c6434772-3a76-11d9-8947-852cf9d745d1')
+INSERT INTO PRINCIPAL VALUES('d0c25a3a-3a76-11d9-b23a-bb17b6deeb22','austin-lab','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','d0c25a3a-3a76-11d9-b23a-bb17b6deeb22')
+COMMIT
+COMMIT
+CONNECT USER sa PASSWORD ""
+SET AUTOCOMMIT FALSE
+INSERT INTO APP_CONFIGURATION VALUES('chp09','chp09.TomcatLoginModule','required')
+COMMIT
+COMMIT
+CONNECT USER sa PASSWORD ""
+SET AUTOCOMMIT FALSE
+drop table app_configuration
+drop table principal_db_user
+drop table db_user
+drop table principal
+COMMIT
+CREATE TABLE app_configuration ( appName varchar(32) NOT NULL, loginModuleClass varchar(256) NOT NULL, controlFlag varchar(10) )
+CREATE TABLE db_user ( id varchar(64) NOT NULL, username varchar(32) NOT NULL, password varchar(32), PRIMARY KEY ( id ) )
+ALTER TABLE db_user ADD CONSTRAINT db_user_username UNIQUE (username)
+CREATE TABLE principal ( id varchar(64) NOT NULL, name varchar(32) NOT NULL, class varchar(256) NOT NULL, PRIMARY KEY ( id ) )
+CREATE TABLE principal_db_user ( user_id varchar(32) NOT NULL, principal_id varchar(32) NOT NULL )
+COMMIT
+INSERT INTO DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','mcote','secret')
+INSERT INTO PRINCIPAL VALUES('b8632f3f-3a76-11d9-a885-f556d67c71cf','sysadmin','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','b8632f3f-3a76-11d9-a885-f556d67c71cf')
+INSERT INTO PRINCIPAL VALUES('c6434772-3a76-11d9-8947-852cf9d745d1','users','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','c6434772-3a76-11d9-8947-852cf9d745d1')
+INSERT INTO PRINCIPAL VALUES('d0c25a3a-3a76-11d9-b23a-bb17b6deeb22','austin-lab','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','d0c25a3a-3a76-11d9-b23a-bb17b6deeb22')
+COMMIT
+COMMIT
+CONNECT USER sa PASSWORD ""
+SET AUTOCOMMIT FALSE
+INSERT INTO APP_CONFIGURATION VALUES('chp09','chp09.TomcatLoginModule','required')
+COMMIT
+COMMIT
+CONNECT USER sa PASSWORD ""
+SET AUTOCOMMIT FALSE
+drop table app_configuration
+drop table principal_db_user
+drop table db_user
+drop table principal
+COMMIT
+CREATE TABLE app_configuration ( appName varchar(32) NOT NULL, loginModuleClass varchar(256) NOT NULL, controlFlag varchar(10) )
+CREATE TABLE db_user ( id varchar(64) NOT NULL, username varchar(32) NOT NULL, password varchar(32), PRIMARY KEY ( id ) )
+ALTER TABLE db_user ADD CONSTRAINT db_user_username UNIQUE (username)
+CREATE TABLE principal ( id varchar(64) NOT NULL, name varchar(32) NOT NULL, class varchar(256) NOT NULL, PRIMARY KEY ( id ) )
+CREATE TABLE principal_db_user ( user_id varchar(32) NOT NULL, principal_id varchar(32) NOT NULL )
+COMMIT
+INSERT INTO DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','mcote','secret')
+INSERT INTO PRINCIPAL VALUES('b8632f3f-3a76-11d9-a885-f556d67c71cf','sysadmin','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','b8632f3f-3a76-11d9-a885-f556d67c71cf')
+INSERT INTO PRINCIPAL VALUES('c6434772-3a76-11d9-8947-852cf9d745d1','users','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','c6434772-3a76-11d9-8947-852cf9d745d1')
+INSERT INTO PRINCIPAL VALUES('d0c25a3a-3a76-11d9-b23a-bb17b6deeb22','austin-lab','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','d0c25a3a-3a76-11d9-b23a-bb17b6deeb22')
+COMMIT
+COMMIT
+CONNECT USER sa PASSWORD ""
+SET AUTOCOMMIT FALSE
+INSERT INTO APP_CONFIGURATION VALUES('chp09','chp09.TomcatLoginModule','required')
+COMMIT
+COMMIT
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+SET AUTOCOMMIT FALSE
+drop table app_configuration
+drop table principal_db_user
+drop table db_user
+drop table principal
+COMMIT
+CREATE TABLE app_configuration ( appName varchar(32) NOT NULL, loginModuleClass varchar(256) NOT NULL, controlFlag varchar(10) )
+CREATE TABLE db_user ( id varchar(64) NOT NULL, username varchar(32) NOT NULL, password varchar(32), PRIMARY KEY ( id ) )
+ALTER TABLE db_user ADD CONSTRAINT db_user_username UNIQUE (username)
+CREATE TABLE principal ( id varchar(64) NOT NULL, name varchar(32) NOT NULL, class varchar(256) NOT NULL, PRIMARY KEY ( id ) )
+CREATE TABLE principal_db_user ( user_id varchar(32) NOT NULL, principal_id varchar(32) NOT NULL )
+COMMIT
+INSERT INTO DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','mcote','secret')
+INSERT INTO PRINCIPAL VALUES('b8632f3f-3a76-11d9-a885-f556d67c71cf','sysadmin','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','b8632f3f-3a76-11d9-a885-f556d67c71cf')
+INSERT INTO PRINCIPAL VALUES('c6434772-3a76-11d9-8947-852cf9d745d1','users','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','c6434772-3a76-11d9-8947-852cf9d745d1')
+INSERT INTO PRINCIPAL VALUES('d0c25a3a-3a76-11d9-b23a-bb17b6deeb22','austin-lab','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','d0c25a3a-3a76-11d9-b23a-bb17b6deeb22')
+COMMIT
+COMMIT
+CONNECT USER sa PASSWORD ""
+SET AUTOCOMMIT FALSE
+INSERT INTO APP_CONFIGURATION VALUES('chp09','chp09.TomcatLoginModule','required')
+COMMIT
+COMMIT
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+SET AUTOCOMMIT FALSE
+drop table app_configuration
+drop table principal_db_user
+drop table db_user
+drop table principal
+COMMIT
+CREATE TABLE app_configuration ( appName varchar(32) NOT NULL, loginModuleClass varchar(256) NOT NULL, controlFlag varchar(10) )
+CREATE TABLE db_user ( id varchar(64) NOT NULL, username varchar(32) NOT NULL, password varchar(32), PRIMARY KEY ( id ) )
+ALTER TABLE db_user ADD CONSTRAINT db_user_username UNIQUE (username)
+CREATE TABLE principal ( id varchar(64) NOT NULL, name varchar(32) NOT NULL, class varchar(256) NOT NULL, PRIMARY KEY ( id ) )
+CREATE TABLE principal_db_user ( user_id varchar(32) NOT NULL, principal_id varchar(32) NOT NULL )
+COMMIT
+INSERT INTO DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','mcote','secret')
+INSERT INTO PRINCIPAL VALUES('b8632f3f-3a76-11d9-a885-f556d67c71cf','sysadmin','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','b8632f3f-3a76-11d9-a885-f556d67c71cf')
+INSERT INTO PRINCIPAL VALUES('c6434772-3a76-11d9-8947-852cf9d745d1','users','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','c6434772-3a76-11d9-8947-852cf9d745d1')
+INSERT INTO PRINCIPAL VALUES('d0c25a3a-3a76-11d9-b23a-bb17b6deeb22','austin-lab','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','d0c25a3a-3a76-11d9-b23a-bb17b6deeb22')
+COMMIT
+COMMIT
+CONNECT USER sa PASSWORD ""
+SET AUTOCOMMIT FALSE
+INSERT INTO APP_CONFIGURATION VALUES('chp09','chp09.TomcatLoginModule','required')
+COMMIT
+COMMIT
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+SET AUTOCOMMIT FALSE
+drop table app_configuration
+drop table principal_db_user
+drop table db_user
+drop table principal
+COMMIT
+CREATE TABLE app_configuration ( appName varchar(32) NOT NULL, loginModuleClass varchar(256) NOT NULL, controlFlag varchar(10) )
+CREATE TABLE db_user ( id varchar(64) NOT NULL, username varchar(32) NOT NULL, password varchar(32), PRIMARY KEY ( id ) )
+ALTER TABLE db_user ADD CONSTRAINT db_user_username UNIQUE (username)
+CREATE TABLE principal ( id varchar(64) NOT NULL, name varchar(32) NOT NULL, class varchar(256) NOT NULL, PRIMARY KEY ( id ) )
+CREATE TABLE principal_db_user ( user_id varchar(32) NOT NULL, principal_id varchar(32) NOT NULL )
+COMMIT
+INSERT INTO DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','mcote','secret')
+INSERT INTO PRINCIPAL VALUES('b8632f3f-3a76-11d9-a885-f556d67c71cf','sysadmin','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','b8632f3f-3a76-11d9-a885-f556d67c71cf')
+INSERT INTO PRINCIPAL VALUES('c6434772-3a76-11d9-8947-852cf9d745d1','users','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','c6434772-3a76-11d9-8947-852cf9d745d1')
+INSERT INTO PRINCIPAL VALUES('d0c25a3a-3a76-11d9-b23a-bb17b6deeb22','austin-lab','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','d0c25a3a-3a76-11d9-b23a-bb17b6deeb22')
+COMMIT
+COMMIT
+CONNECT USER sa PASSWORD ""
+SET AUTOCOMMIT FALSE
+INSERT INTO APP_CONFIGURATION VALUES('chp09','chp09.TomcatLoginModule','required')
+COMMIT
+COMMIT
+CONNECT USER sa PASSWORD ""
+SET AUTOCOMMIT FALSE
+drop table app_configuration
+drop table principal_db_user
+drop table db_user
+drop table principal
+COMMIT
+CREATE TABLE app_configuration ( appName varchar(32) NOT NULL, loginModuleClass varchar(256) NOT NULL, controlFlag varchar(10) )
+CREATE TABLE db_user ( id varchar(64) NOT NULL, username varchar(32) NOT NULL, password varchar(32), PRIMARY KEY ( id ) )
+ALTER TABLE db_user ADD CONSTRAINT db_user_username UNIQUE (username)
+CREATE TABLE principal ( id varchar(64) NOT NULL, name varchar(32) NOT NULL, class varchar(256) NOT NULL, PRIMARY KEY ( id ) )
+CREATE TABLE principal_db_user ( user_id varchar(32) NOT NULL, principal_id varchar(32) NOT NULL )
+COMMIT
+INSERT INTO DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','mcote','secret')
+INSERT INTO PRINCIPAL VALUES('b8632f3f-3a76-11d9-a885-f556d67c71cf','sysadmin','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','b8632f3f-3a76-11d9-a885-f556d67c71cf')
+INSERT INTO PRINCIPAL VALUES('c6434772-3a76-11d9-8947-852cf9d745d1','users','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','c6434772-3a76-11d9-8947-852cf9d745d1')
+INSERT INTO PRINCIPAL VALUES('d0c25a3a-3a76-11d9-b23a-bb17b6deeb22','austin-lab','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','d0c25a3a-3a76-11d9-b23a-bb17b6deeb22')
+COMMIT
+COMMIT
+CONNECT USER sa PASSWORD ""
+SET AUTOCOMMIT FALSE
+INSERT INTO APP_CONFIGURATION VALUES('chp09','chp09.TomcatLoginModule','required')
+COMMIT
+COMMIT
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+SET AUTOCOMMIT FALSE
+drop table app_configuration
+drop table principal_db_user
+drop table db_user
+drop table principal
+COMMIT
+CREATE TABLE app_configuration ( appName varchar(32) NOT NULL, loginModuleClass varchar(256) NOT NULL, controlFlag varchar(10) )
+CREATE TABLE db_user ( id varchar(64) NOT NULL, username varchar(32) NOT NULL, password varchar(32), PRIMARY KEY ( id ) )
+ALTER TABLE db_user ADD CONSTRAINT db_user_username UNIQUE (username)
+CREATE TABLE principal ( id varchar(64) NOT NULL, name varchar(32) NOT NULL, class varchar(256) NOT NULL, PRIMARY KEY ( id ) )
+CREATE TABLE principal_db_user ( user_id varchar(32) NOT NULL, principal_id varchar(32) NOT NULL )
+COMMIT
+INSERT INTO DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','mcote','secret')
+INSERT INTO PRINCIPAL VALUES('b8632f3f-3a76-11d9-a885-f556d67c71cf','sysadmin','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','b8632f3f-3a76-11d9-a885-f556d67c71cf')
+INSERT INTO PRINCIPAL VALUES('c6434772-3a76-11d9-8947-852cf9d745d1','users','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','c6434772-3a76-11d9-8947-852cf9d745d1')
+INSERT INTO PRINCIPAL VALUES('d0c25a3a-3a76-11d9-b23a-bb17b6deeb22','austin-lab','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','d0c25a3a-3a76-11d9-b23a-bb17b6deeb22')
+COMMIT
+COMMIT
+CONNECT USER sa PASSWORD ""
+SET AUTOCOMMIT FALSE
+INSERT INTO APP_CONFIGURATION VALUES('chp09','chp09.TomcatLoginModule','required')
+COMMIT
+COMMIT
+CONNECT USER sa PASSWORD ""
+SET AUTOCOMMIT FALSE
+drop table app_configuration
+drop table principal_db_user
+drop table db_user
+drop table principal
+COMMIT
+CREATE TABLE app_configuration ( appName varchar(32) NOT NULL, loginModuleClass varchar(256) NOT NULL, controlFlag varchar(10) )
+CREATE TABLE db_user ( id varchar(64) NOT NULL, username varchar(32) NOT NULL, password varchar(32), PRIMARY KEY ( id ) )
+ALTER TABLE db_user ADD CONSTRAINT db_user_username UNIQUE (username)
+CREATE TABLE principal ( id varchar(64) NOT NULL, name varchar(32) NOT NULL, class varchar(256) NOT NULL, PRIMARY KEY ( id ) )
+CREATE TABLE principal_db_user ( user_id varchar(32) NOT NULL, principal_id varchar(32) NOT NULL )
+COMMIT
+INSERT INTO DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','mcote','secret')
+INSERT INTO PRINCIPAL VALUES('b8632f3f-3a76-11d9-a885-f556d67c71cf','sysadmin','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','b8632f3f-3a76-11d9-a885-f556d67c71cf')
+INSERT INTO PRINCIPAL VALUES('c6434772-3a76-11d9-8947-852cf9d745d1','users','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','c6434772-3a76-11d9-8947-852cf9d745d1')
+INSERT INTO PRINCIPAL VALUES('d0c25a3a-3a76-11d9-b23a-bb17b6deeb22','austin-lab','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','d0c25a3a-3a76-11d9-b23a-bb17b6deeb22')
+COMMIT
+COMMIT
+CONNECT USER sa PASSWORD ""
+SET AUTOCOMMIT FALSE
+INSERT INTO APP_CONFIGURATION VALUES('chp09','chp09.TomcatLoginModule','required')
+COMMIT
+COMMIT
+CONNECT USER sa PASSWORD ""
+SET AUTOCOMMIT FALSE
+drop table app_configuration
+drop table principal_db_user
+drop table db_user
+drop table principal
+COMMIT
+CREATE TABLE app_configuration ( appName varchar(32) NOT NULL, loginModuleClass varchar(256) NOT NULL, controlFlag varchar(10) )
+CREATE TABLE db_user ( id varchar(64) NOT NULL, username varchar(32) NOT NULL, password varchar(32), PRIMARY KEY ( id ) )
+ALTER TABLE db_user ADD CONSTRAINT db_user_username UNIQUE (username)
+CREATE TABLE principal ( id varchar(64) NOT NULL, name varchar(32) NOT NULL, class varchar(256) NOT NULL, PRIMARY KEY ( id ) )
+CREATE TABLE principal_db_user ( user_id varchar(32) NOT NULL, principal_id varchar(32) NOT NULL )
+COMMIT
+INSERT INTO DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','mcote','secret')
+INSERT INTO PRINCIPAL VALUES('b8632f3f-3a76-11d9-a885-f556d67c71cf','sysadmin','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','b8632f3f-3a76-11d9-a885-f556d67c71cf')
+INSERT INTO PRINCIPAL VALUES('c6434772-3a76-11d9-8947-852cf9d745d1','users','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','c6434772-3a76-11d9-8947-852cf9d745d1')
+INSERT INTO PRINCIPAL VALUES('d0c25a3a-3a76-11d9-b23a-bb17b6deeb22','austin-lab','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','d0c25a3a-3a76-11d9-b23a-bb17b6deeb22')
+COMMIT
+COMMIT
+CONNECT USER sa PASSWORD ""
+SET AUTOCOMMIT FALSE
+INSERT INTO APP_CONFIGURATION VALUES('chp09','chp09.TomcatLoginModule','required')
+COMMIT
+COMMIT
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+SET AUTOCOMMIT FALSE
+drop table app_configuration
+drop table principal_db_user
+drop table db_user
+drop table principal
+COMMIT
+CREATE TABLE app_configuration ( appName varchar(32) NOT NULL, loginModuleClass varchar(256) NOT NULL, controlFlag varchar(10) )
+CREATE TABLE db_user ( id varchar(64) NOT NULL, username varchar(32) NOT NULL, password varchar(32), PRIMARY KEY ( id ) )
+ALTER TABLE db_user ADD CONSTRAINT db_user_username UNIQUE (username)
+CREATE TABLE principal ( id varchar(64) NOT NULL, name varchar(32) NOT NULL, class varchar(256) NOT NULL, PRIMARY KEY ( id ) )
+CREATE TABLE principal_db_user ( user_id varchar(32) NOT NULL, principal_id varchar(32) NOT NULL )
+COMMIT
+INSERT INTO DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','mcote','secret')
+INSERT INTO PRINCIPAL VALUES('b8632f3f-3a76-11d9-a885-f556d67c71cf','sysadmin','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','b8632f3f-3a76-11d9-a885-f556d67c71cf')
+INSERT INTO PRINCIPAL VALUES('c6434772-3a76-11d9-8947-852cf9d745d1','users','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','c6434772-3a76-11d9-8947-852cf9d745d1')
+INSERT INTO PRINCIPAL VALUES('d0c25a3a-3a76-11d9-b23a-bb17b6deeb22','austin-lab','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','d0c25a3a-3a76-11d9-b23a-bb17b6deeb22')
+COMMIT
+COMMIT
+CONNECT USER sa PASSWORD ""
+SET AUTOCOMMIT FALSE
+INSERT INTO APP_CONFIGURATION VALUES('chp09','chp09.TomcatLoginModule','required')
+COMMIT
+COMMIT
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+SET AUTOCOMMIT FALSE
+drop table app_configuration
+drop table principal_db_user
+drop table db_user
+drop table principal
+COMMIT
+CREATE TABLE app_configuration ( appName varchar(32) NOT NULL, loginModuleClass varchar(256) NOT NULL, controlFlag varchar(10) )
+CREATE TABLE db_user ( id varchar(64) NOT NULL, username varchar(32) NOT NULL, password varchar(32), PRIMARY KEY ( id ) )
+ALTER TABLE db_user ADD CONSTRAINT db_user_username UNIQUE (username)
+CREATE TABLE principal ( id varchar(64) NOT NULL, name varchar(32) NOT NULL, class varchar(256) NOT NULL, PRIMARY KEY ( id ) )
+CREATE TABLE principal_db_user ( user_id varchar(32) NOT NULL, principal_id varchar(32) NOT NULL )
+COMMIT
+INSERT INTO DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','mcote','secret')
+INSERT INTO PRINCIPAL VALUES('b8632f3f-3a76-11d9-a885-f556d67c71cf','sysadmin','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','b8632f3f-3a76-11d9-a885-f556d67c71cf')
+INSERT INTO PRINCIPAL VALUES('c6434772-3a76-11d9-8947-852cf9d745d1','users','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','c6434772-3a76-11d9-8947-852cf9d745d1')
+INSERT INTO PRINCIPAL VALUES('d0c25a3a-3a76-11d9-b23a-bb17b6deeb22','austin-lab','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','d0c25a3a-3a76-11d9-b23a-bb17b6deeb22')
+COMMIT
+COMMIT
+CONNECT USER sa PASSWORD ""
+SET AUTOCOMMIT FALSE
+INSERT INTO APP_CONFIGURATION VALUES('chp09','chp09.TomcatLoginModule','required')
+COMMIT
+COMMIT
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+SET AUTOCOMMIT FALSE
+drop table app_configuration
+drop table principal_db_user
+drop table db_user
+drop table principal
+COMMIT
+CREATE TABLE app_configuration ( appName varchar(32) NOT NULL, loginModuleClass varchar(256) NOT NULL, controlFlag varchar(10) )
+CREATE TABLE db_user ( id varchar(64) NOT NULL, username varchar(32) NOT NULL, password varchar(32), PRIMARY KEY ( id ) )
+ALTER TABLE db_user ADD CONSTRAINT db_user_username UNIQUE (username)
+CREATE TABLE principal ( id varchar(64) NOT NULL, name varchar(32) NOT NULL, class varchar(256) NOT NULL, PRIMARY KEY ( id ) )
+CREATE TABLE principal_db_user ( user_id varchar(32) NOT NULL, principal_id varchar(32) NOT NULL )
+COMMIT
+INSERT INTO DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','mcote','secret')
+INSERT INTO PRINCIPAL VALUES('b8632f3f-3a76-11d9-a885-f556d67c71cf','sysadmin','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','b8632f3f-3a76-11d9-a885-f556d67c71cf')
+INSERT INTO PRINCIPAL VALUES('c6434772-3a76-11d9-8947-852cf9d745d1','users','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','c6434772-3a76-11d9-8947-852cf9d745d1')
+INSERT INTO PRINCIPAL VALUES('d0c25a3a-3a76-11d9-b23a-bb17b6deeb22','austin-lab','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','d0c25a3a-3a76-11d9-b23a-bb17b6deeb22')
+COMMIT
+COMMIT
+CONNECT USER sa PASSWORD ""
+SET AUTOCOMMIT FALSE
+INSERT INTO APP_CONFIGURATION VALUES('chp09','chp04.DbLoginModule','REQUIRED')
+INSERT INTO DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c836','customer','secret')
+INSERT INTO PRINCIPAL VALUES('b8632f3f-3a76-11d9-a885-f556d67c71cg','admin','chp09.RolePrincipal')
+INSERT INTO PRINCIPAL_DB_USER VALUES('b8632f3f-3a76-11d9-a885-f556d67c71cg','98111b1b-3a76-11d9-a5a9-81f52338c835')
+INSERT INTO PRINCIPAL VALUES('b8632f3f-3a76-11d9-a885-f556d67c71ch','customer','chp09.RolePrincipal')
+INSERT INTO PRINCIPAL_DB_USER VALUES('b8632f3f-3a76-11d9-a885-f556d67c71ch','98111b1b-3a76-11d9-a5a9-81f52338c836')
+COMMIT
+COMMIT
+CONNECT USER sa PASSWORD ""
+SET AUTOCOMMIT FALSE
+drop table app_configuration
+drop table principal_db_user
+drop table db_user
+drop table principal
+COMMIT
+CREATE TABLE app_configuration ( appName varchar(32) NOT NULL, loginModuleClass varchar(256) NOT NULL, controlFlag varchar(10) )
+CREATE TABLE db_user ( id varchar(64) NOT NULL, username varchar(32) NOT NULL, password varchar(32), PRIMARY KEY ( id ) )
+ALTER TABLE db_user ADD CONSTRAINT db_user_username UNIQUE (username)
+CREATE TABLE principal ( id varchar(64) NOT NULL, name varchar(32) NOT NULL, class varchar(256) NOT NULL, PRIMARY KEY ( id ) )
+CREATE TABLE principal_db_user ( user_id varchar(32) NOT NULL, principal_id varchar(32) NOT NULL )
+COMMIT
+INSERT INTO DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','mcote','secret')
+INSERT INTO PRINCIPAL VALUES('b8632f3f-3a76-11d9-a885-f556d67c71cf','sysadmin','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','b8632f3f-3a76-11d9-a885-f556d67c71cf')
+INSERT INTO PRINCIPAL VALUES('c6434772-3a76-11d9-8947-852cf9d745d1','users','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','c6434772-3a76-11d9-8947-852cf9d745d1')
+INSERT INTO PRINCIPAL VALUES('d0c25a3a-3a76-11d9-b23a-bb17b6deeb22','austin-lab','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','d0c25a3a-3a76-11d9-b23a-bb17b6deeb22')
+COMMIT
+COMMIT
+CONNECT USER sa PASSWORD ""
+SET AUTOCOMMIT FALSE
+INSERT INTO APP_CONFIGURATION VALUES('chp09','chp04.DbLoginModule','REQUIRED')
+INSERT INTO DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c836','admin','secret')
+INSERT INTO DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c837','customer','secret')
+INSERT INTO PRINCIPAL VALUES('b8632f3f-3a76-11d9-a885-f556d67c71cg','admin','chp09.RolePrincipal')
+INSERT INTO PRINCIPAL_DB_USER VALUES('b8632f3f-3a76-11d9-a885-f556d67c71cg','98111b1b-3a76-11d9-a5a9-81f52338c835')
+INSERT INTO PRINCIPAL VALUES('b8632f3f-3a76-11d9-a885-f556d67c71ch','customer','chp09.RolePrincipal')
+INSERT INTO PRINCIPAL_DB_USER VALUES('b8632f3f-3a76-11d9-a885-f556d67c71ch','98111b1b-3a76-11d9-a5a9-81f52338c836')
+COMMIT
+COMMIT
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+SET AUTOCOMMIT FALSE
+drop table app_configuration
+drop table principal_db_user
+drop table db_user
+drop table principal
+COMMIT
+CREATE TABLE app_configuration ( appName varchar(32) NOT NULL, loginModuleClass varchar(256) NOT NULL, controlFlag varchar(10) )
+CREATE TABLE db_user ( id varchar(64) NOT NULL, username varchar(32) NOT NULL, password varchar(32), PRIMARY KEY ( id ) )
+ALTER TABLE db_user ADD CONSTRAINT db_user_username UNIQUE (username)
+CREATE TABLE principal ( id varchar(64) NOT NULL, name varchar(32) NOT NULL, class varchar(256) NOT NULL, PRIMARY KEY ( id ) )
+CREATE TABLE principal_db_user ( user_id varchar(32) NOT NULL, principal_id varchar(32) NOT NULL )
+COMMIT
+INSERT INTO DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','mcote','secret')
+INSERT INTO PRINCIPAL VALUES('b8632f3f-3a76-11d9-a885-f556d67c71cf','sysadmin','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','b8632f3f-3a76-11d9-a885-f556d67c71cf')
+INSERT INTO PRINCIPAL VALUES('c6434772-3a76-11d9-8947-852cf9d745d1','users','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','c6434772-3a76-11d9-8947-852cf9d745d1')
+INSERT INTO PRINCIPAL VALUES('d0c25a3a-3a76-11d9-b23a-bb17b6deeb22','austin-lab','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','d0c25a3a-3a76-11d9-b23a-bb17b6deeb22')
+COMMIT
+COMMIT
+CONNECT USER sa PASSWORD ""
+SET AUTOCOMMIT FALSE
+INSERT INTO APP_CONFIGURATION VALUES('chp09','chp04.DbLoginModule','REQUIRED')
+INSERT INTO DB_USER VALUES('admin-user-id','admin','secret')
+INSERT INTO DB_USER VALUES('customer-user-id','customer','secret')
+INSERT INTO PRINCIPAL VALUES('admin-principal-id','admin','chp09.RolePrincipal')
+INSERT INTO PRINCIPAL_DB_USER VALUES('admin-principal-id','admin-user-id')
+INSERT INTO PRINCIPAL VALUES('customer-principal-id','customer','chp09.RolePrincipal')
+INSERT INTO PRINCIPAL_DB_USER VALUES('customer-principal-id','customer-user-id')
+COMMIT
+COMMIT
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+SET AUTOCOMMIT TRUE
+/*C2*/CONNECT USER sa PASSWORD ""
+SET AUTOCOMMIT FALSE
+drop table app_configuration
+drop table principal_db_user
+drop table db_user
+drop table principal
+COMMIT
+CREATE TABLE app_configuration ( appName varchar(32) NOT NULL, loginModuleClass varchar(256) NOT NULL, controlFlag varchar(10) )
+CREATE TABLE db_user ( id varchar(64) NOT NULL, username varchar(32) NOT NULL, password varchar(32), PRIMARY KEY ( id ) )
+ALTER TABLE db_user ADD CONSTRAINT db_user_username UNIQUE (username)
+CREATE TABLE principal ( id varchar(64) NOT NULL, name varchar(32) NOT NULL, class varchar(256) NOT NULL, PRIMARY KEY ( id ) )
+CREATE TABLE principal_db_user ( user_id varchar(32) NOT NULL, principal_id varchar(32) NOT NULL )
+COMMIT
+INSERT INTO DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','mcote','secret')
+INSERT INTO PRINCIPAL VALUES('b8632f3f-3a76-11d9-a885-f556d67c71cf','sysadmin','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','b8632f3f-3a76-11d9-a885-f556d67c71cf')
+INSERT INTO PRINCIPAL VALUES('c6434772-3a76-11d9-8947-852cf9d745d1','users','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','c6434772-3a76-11d9-8947-852cf9d745d1')
+INSERT INTO PRINCIPAL VALUES('d0c25a3a-3a76-11d9-b23a-bb17b6deeb22','austin-lab','chp04.UserGroupPrincipale')
+INSERT INTO PRINCIPAL_DB_USER VALUES('98111b1b-3a76-11d9-a5a9-81f52338c835','d0c25a3a-3a76-11d9-b23a-bb17b6deeb22')
+COMMIT
+COMMIT
+CONNECT USER sa PASSWORD ""
+SET AUTOCOMMIT FALSE
+INSERT INTO APP_CONFIGURATION VALUES('chp09','chp04.DbLoginModule','REQUIRED')
+INSERT INTO DB_USER VALUES('admin-user-id','admin','secret')
+INSERT INTO DB_USER VALUES('customer-user-id','customer','secret')
+INSERT INTO PRINCIPAL VALUES('admin-principal-id','admin','chp09.RolePrincipal')
+INSERT INTO PRINCIPAL_DB_USER VALUES('admin-user-id','admin-principal-id')
+INSERT INTO PRINCIPAL VALUES('customer-principal-id','customer','chp09.RolePrincipal')
+INSERT INTO PRINCIPAL_DB_USER VALUES('customer-user-id','customer-principal-id')
+COMMIT
+COMMIT
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""
+CONNECT USER sa PASSWORD ""

@@ -1,0 +1,5 @@
+grant codeBase "file:///Users/michaelcote/dev/jaas-book/build/java/*"
+{
+  permission java.security.AllPermission;
+}; 
+

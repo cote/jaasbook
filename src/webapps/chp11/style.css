@@ -1,0 +1,53 @@
+body
+{
+ padding: 10px;
+ font-family: lucida grande, verdana, arial, sans-serif;
+ line-height: 140%;
+}
+
+.title-line
+{
+ border: 1px dashed #808080;
+ height: 1px;
+}
+
+.note
+{
+ border: 1px dashed #808080;
+ color: #000000;
+ font-family: lucida grande, verdana, arial, sans-serif;
+ font-size: 80%;
+ line-height: 140%;
+ padding: 10px;
+}
+
+.quick-add
+{
+ font-size: 70%;
+}
+
+.quick-add h2
+{
+ display: inline;
+}
+
+.note-date
+{
+ color: #505050;
+}
+
+.errors-list
+{
+ font-weight: bold;
+ color: red;
+}
+
+table.data
+{
+ border-collapse: collapse;
+}
+
+table.data td
+{
+ border-bottom: 1px solid black;
+}

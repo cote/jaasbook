@@ -1,0 +1,336 @@
+<project name="jaas-book" default="compile" basedir=".">
+
+ <property file="build.properties"/>
+ <property name="build.dir" value="${basedir}/build"/>
+ <property name="src.dir" value="${basedir}/src"/>
+ <property name="java.src.dir" value="${src.dir}/java"/>
+ <property name="java.build.dir" value="${build.dir}/java"/> 
+ <property name="conf.src.dir" value="${src.dir}/conf"/>
+ <property name="conf.build.dir" value="${build.dir}/conf"/>
+ <property name="lib.dir" value="${basedir}/lib"/> 
+ <property name="sql.src" value="${basedir}/src/db"/> 
+ <property name="jsp.src" value="${src.dir}/webapps/" />
+ <property name="jsp.build" value="${build.dir}/webapps/" />
+
+ <property name="jsp.chp09.src" value="${jsp.src}/chp09"/>
+ <property name="jsp.chp09.build" value="${jsp.build}/chp09" />
+ <property name="jsp.chp10.src" value="${jsp.src}/chp10"/>
+ <property name="jsp.chp10.build" value="${jsp.build}/chp10" />
+ <property name="jsp.notepad.src" value="${jsp.src}/notepad"/>
+ <property name="jsp.notepad.build" value="${jsp.build}/jaas-book-notepad"/>
+ <property name="jsp.chp11.src" value="${jsp.src}/chp11"/>
+ <property name="jsp.chp11.build" value="${jsp.build}/chp11"/>
+
+ <path id="cp">
+   <fileset dir="${lib.dir}" includes="*.jar"/>
+   <fileset dir="${lib.dir}/struts" includes="*.jar"/>
+   <pathelement path="${java.build.dir}"/>
+ </path>
+
+ <filterset id="prjdir">
+   <filter token="PRJ-DIR" value="${basedir}"/>
+ </filterset>
+
+ <target name="clean">
+  <delete dir="${build.dir}"/>
+ </target>
+
+ <target name="compile">
+  <mkdir dir="${java.build.dir}"/>
+  <mkdir dir="${conf.build.dir}"/>
+  <javac srcdir="${java.src.dir}" destdir="${java.build.dir}"
+         debug="on" classpathref="cp"/>
+  <!-- copy over properties and config files -->
+  <copy todir="${java.build.dir}" overwrite="true">
+    <fileset dir="${java.src.dir}" includes="**/*.properties" />
+  </copy>
+  <copy todir="${conf.build.dir}">
+    <fileset dir="${conf.src.dir}"/>
+    <filterset refid="prjdir"/>
+  </copy>
+ </target>
+
+ <target name="build-db-chp04">
+    <property file="${java.src.dir}/DbService.properties"/>
+    <sql classpathref="cp" 
+         driver="${dbDriver}" 
+         url="${dbUrl}" 
+         userid="${dbLogin}" 
+         password="${dbPassword}"
+         onerror="continue">
+      <transaction src="${sql.src}/chp04/chp04-drop.sql" />
+      <transaction src="${sql.src}/chp04/chp04-tables.sql" />
+      <transaction src="${sql.src}/chp04/chp04-populate.sql" />
+    </sql>
+ </target>
+
+ <target name="build-db-chp06" depends="build-db-chp04">
+    <property file="${java.src.dir}/DbService.properties"/>
+    <sql classpathref="cp" 
+         driver="${dbDriver}" 
+         url="${dbUrl}" 
+         userid="${dbLogin}" 
+         password="${dbPassword}"
+         onerror="continue">
+      <transaction src="${sql.src}/chp06/chp06-drop.sql" />
+      <transaction src="${sql.src}/chp06/chp06-tables.sql" />
+      <transaction src="${sql.src}/chp06/chp06-populate.sql" />
+    </sql>
+ </target>
+
+ <target name="build-db-chp09" depends="build-db-chp06"
+         description="Builds DB for Chapter 9.">
+    <property file="${java.src.dir}/DbService.properties"/>
+    <sql classpathref="cp" 
+         driver="${dbDriver}" 
+         url="${dbUrl}" 
+         userid="${dbLogin}" 
+         password="${dbPassword}"
+         onerror="continue">
+      <transaction src="${sql.src}/chp09/chp09-populate.sql" />
+    </sql>
+ </target>
+
+ <target name="build-db-chp10" depends="build-db-chp09"
+         description="Builds DB for Chapter 10.">
+    <property file="${java.src.dir}/DbService.properties"/>
+    <sql classpathref="cp" 
+         driver="${dbDriver}" 
+         url="${dbUrl}" 
+         userid="${dbLogin}" 
+         password="${dbPassword}"
+         onerror="continue">
+      <transaction src="${sql.src}/chp10/chp10-populate.sql" />
+    </sql>
+ </target>
+    
+  <!--
+  -Djava.security.auth.policy=src/conf/jaaspolicy.properties
+  -Djava.security.policy=src/conf/standardpolicy.properties
+  -Djava.security.auth.login.config=src/conf/loginmodules.properties
+  -Djava.security.manager
+  -->
+
+  <target name="run-chp02" depends="compile"
+          description="Runs the second example for Chapter 02.">
+    <java classname="chp02.Chp02Main" classpathref="cp" fork="true">
+     <jvmarg value="-Djava.security.manager"/> 
+     <jvmarg value="-Djava.security.auth.login.config=${conf.build.dir}/chp02-loginmodules.properties"/>
+     <jvmarg value="-Djava.security.policy=${conf.build.dir}/chp02.policy"/>
+    </java>
+  </target>
+
+  <target name="run-chp02a" depends="compile"
+          description="Runs the first example for Chapter 02.">
+    <java classname="chp02.Chp02aMain" classpathref="cp" fork="true">
+     <!--<jvmarg value="-Djava.security.debug=access:failure"/>-->
+     <jvmarg value="-Djava.security.manager"/> 
+     <jvmarg value="-Djava.security.policy=${conf.build.dir}/chp02a.policy"/>
+    </java>
+  </target>
+
+  <target name="run-chp04" depends="compile, build-db-chp04"
+          description="Runs first example in Chapter 04">
+    <java classname="chp04.Main" classpathref="cp" fork="true"/>
+  </target>
+
+  <target name="run-chp06" depends="compile, build-db-chp06"
+          description="Runs first example in Chapter 06">
+    <java classname="chp06.Main" classpathref="cp" fork="true"/>
+  </target>
+
+  <target name="run-chp08" depends="compile, build-db-chp04, build-db-chp06"
+          description="Runs first example in Chapter 08">
+    <java classname="chp08.Main" classpathref="cp" fork="true"/>
+  </target>
+
+  <target name="zip"
+          description="Zipped up code and related code to jaas-book-code.zip">
+    <zip destfile="jaas-book-code.zip">
+     <fileset dir="${basedir}">
+       <include name="*/**"/>
+       <exclude name="jaas-book-code.zip"/>
+       <exclude name="build/"/>
+       <exclude name="tomcat/"/>
+       <exclude name="book/"/>
+     </fileset>
+    </zip>
+  </target>
+
+  <target name="make-webapp-chp09"
+          depends="compile, build-db-chp09" 
+          description="Copies all files to WAR build directory.">
+    <mkdir dir="${jsp.chp09.build}" />
+    <mkdir dir="${jsp.chp09.build}/logs/" />
+    <mkdir dir="${jsp.chp09.build}/WEB-INF/classes" />
+    <mkdir dir="${jsp.chp09.build}/WEB-INF/lib/" />
+    <copy todir="${jsp.chp09.build}">
+      <fileset dir="${jsp.chp09.src}" />
+    </copy>
+    <copy todir="${jsp.chp09.build}/WEB-INF/classes">
+      <fileset dir="${java.build.dir}" />
+    </copy>
+    <replace file="${jsp.chp09.build}/WEB-INF/classes/DbService.properties"
+             token="dbUrl=jdbc:hsqldb:build/db/jaasinaction" 
+             value="dbUrl=jdbc:hsqldb:${build.dir}/db/jaasinaction"/>
+    <copy todir="${jsp.chp09.build}/WEB-INF/lib/">
+      <fileset dir="${basedir}/lib/" />
+    </copy>
+  </target>
+
+  <target name="deploy-jsps-chp09" 
+          description="Deploys only the JSPs and realted files. WEB-INF is excluded.">
+    <copy todir="${jsp.chp09.build}">
+      <fileset dir="${jsp.chp09.src}">
+        <include name="**/*" />
+        <exclude name="WEB-INF/**" />
+      </fileset>
+    </copy>
+  </target>
+
+  <target name="deploy-chp09" 
+          depends="make-webapp-chp09"
+          description="copies server.xml file to tomcat directory.">
+    <copy file="${src.dir}/conf/server-chp09.xml" toFile="${tomcat.deploy.dir}/jaas-book-chp09.xml">
+      <filterset>
+        <filter token="WAR-DEPLOY-ROOT" value="${jsp.chp09.build}" />
+      </filterset>
+    </copy>
+  </target>
+
+  <target name="make-webapp-chp10"
+          depends="make-webapp-chp09, build-db-chp10" 
+          description="Copies all files to WAR build directory.">
+    <mkdir dir="${jsp.chp10.build}" />
+    <mkdir dir="${jsp.chp10.build}/logs/" />
+    <mkdir dir="${jsp.chp10.build}/WEB-INF/classes" />
+    <mkdir dir="${jsp.chp10.build}/WEB-INF/lib/" />
+
+    <!-- copy chp09 pages and tags -->
+    <copy todir="${jsp.chp10.build}">
+      <fileset dir="${jsp.chp09.src}">
+       <exclude name="index.jsp"/>
+       <include name="**/*.jsp"/>
+       <include name="WEB-INF/auth-tags.tld"/>
+      </fileset>
+    </copy>
+    <copy todir="${jsp.chp10.build}">
+      <fileset dir="${jsp.chp10.src}">
+        <include name="**/*" />
+      </fileset>
+    </copy>
+    <copy todir="${jsp.chp10.build}/WEB-INF/classes">
+      <fileset dir="${java.build.dir}" />
+    </copy>
+    <replace file="${jsp.chp10.build}/WEB-INF/classes/DbService.properties"
+             token="dbUrl=jdbc:hsqldb:build/db/jaasinaction" 
+             value="dbUrl=jdbc:hsqldb:${build.dir}/db/jaasinaction"/>
+    <copy todir="${jsp.chp10.build}/WEB-INF/lib/">
+      <fileset dir="${basedir}/lib/" />
+    </copy>
+  </target>
+
+  <target name="deploy-jsps-chp10" 
+          description="Deploys only the JSPs and realted files. WEB-INF is excluded.">
+    <copy todir="${jsp.chp10.build}">
+      <fileset dir="${jsp.chp10.src}">
+        <include name="**/*" />
+        <exclude name="WEB-INF/**" />
+      </fileset>
+    </copy>
+  </target>
+
+  <target name="deploy-chp10" 
+          depends="make-webapp-chp10"
+          description="copies server.xml file to tomcat directory.">
+    <copy file="${src.dir}/conf/server-chp10.xml" toFile="${tomcat.deploy.dir}/jaas-book-chp10.xml">
+      <filterset>
+        <filter token="WAR-DEPLOY-ROOT" value="${jsp.chp10.build}" />
+      </filterset>
+    </copy>
+  </target>
+
+  <target name="make-webapp-notepad"
+          depends="compile" 
+          description="Copies all files to WAR build directory.">
+    <mkdir dir="${jsp.notepad.build}" />
+    <mkdir dir="${jsp.notepad.build}/logs/" />
+    <mkdir dir="${jsp.notepad.build}/WEB-INF/classes" />
+    <mkdir dir="${jsp.notepad.build}/WEB-INF/lib/" />
+    <copy todir="${jsp.notepad.build}">
+      <fileset dir="${jsp.notepad.src}" />
+    </copy>
+    <copy todir="${jsp.notepad.build}/WEB-INF/classes">
+      <fileset dir="${java.build.dir}" />
+    </copy>
+    <copy todir="${jsp.notepad.build}/WEB-INF/lib/">
+      <fileset dir="${lib.dir}" includes="*"/>
+    </copy>
+  </target>
+
+  <target name="deploy-jsps-notepad" 
+          description="Deploys only the JSPs and realted files. WEB-INF is excluded.">
+    <copy todir="${jsp.notepad.build}">
+      <fileset dir="${jsp.notepad.src}">
+        <include name="**/*" />
+        <exclude name="WEB-INF/**" />
+      </fileset>
+    </copy>
+  </target>
+
+  <target name="deploy-notepad" 
+          depends="make-webapp-notepad"
+          description="copies server.xml file to tomcat directory.">
+    <copy file="${src.dir}/conf/server-notepad.xml" 
+          toFile="${tomcat.deploy.dir}/jaas-book-notepad.xml">
+      <filterset>
+        <filter token="WAR-DEPLOY-ROOT" value="${jsp.notepad.build}" />
+      </filterset>
+    </copy>
+  </target>
+
+  <target name="make-webapp-chp11"
+          depends="compile, make-webapp-chp09" 
+          description="Copies all files to WAR build directory.">
+    <mkdir dir="${jsp.chp11.build}" />
+    <mkdir dir="${jsp.chp11.build}/logs/" />
+    <mkdir dir="${jsp.chp11.build}/WEB-INF/classes" />
+    <mkdir dir="${jsp.chp11.build}/WEB-INF/lib/" />
+    <copy todir="${jsp.chp11.build}">
+      <fileset dir="${jsp.chp11.src}" />
+    </copy>
+    <copy todir="${jsp.chp11.build}/WEB-INF/classes">
+      <fileset dir="${java.build.dir}" />
+    </copy>
+    <replace file="${jsp.chp11.build}/WEB-INF/classes/DbService.properties"
+             token="dbUrl=jdbc:hsqldb:build/db/jaasinaction" 
+             value="dbUrl=jdbc:hsqldb:${build.dir}/db/jaasinaction"/>
+    <copy todir="${jsp.chp11.build}/WEB-INF/lib/">
+      <fileset dir="${lib.dir}" includes="*"/>
+      <fileset dir="${lib.dir}/struts" includes="*"/>
+    </copy>
+  </target>
+
+  <target name="deploy-jsps-chp11" 
+          description="Deploys only the JSPs and realted files. WEB-INF is excluded.">
+    <copy todir="${jsp.chp11.build}">
+      <fileset dir="${jsp.chp11.src}">
+        <include name="**/*" />
+        <exclude name="WEB-INF/**" />
+      </fileset>
+    </copy>
+  </target>
+
+  <target name="deploy-chp11" 
+          depends="make-webapp-chp11"
+          description="copies server.xml file to tomcat directory.">
+    <copy file="${src.dir}/conf/server-chp11.xml" 
+          toFile="${tomcat.deploy.dir}/jaas-book-chp11.xml">
+      <filterset>
+        <filter token="WAR-DEPLOY-ROOT" value="${jsp.chp11.build}" />
+      </filterset>
+    </copy>
+  </target>
+
+
+</project>

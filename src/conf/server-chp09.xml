@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<Context path="/jaas-book-chp09" docBase="@WAR-DEPLOY-ROOT@"
+         debug="0" reloadable="true">
+  <Realm className="org.apache.catalina.realm.JAASRealm"
+         appName="chp09"
+         userClassNames="chp09.UserPrincipal"
+         roleClassNames="chp04.UserGroupPrincipal"
+         useContextClassLoader="false"/>
+</Context>

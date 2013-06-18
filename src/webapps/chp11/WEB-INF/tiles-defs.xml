@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+       "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+
+<tiles-definitions>
+
+    <definition name=".mainLayout" path="/WEB-INF/pages/tiles/layout.jsp">
+        <put name="title"  value="Notepad!" />
+    </definition>
+
+    <definition name=".list.page" extends=".mainLayout">
+        <put name="title"  value="All Notes" />
+        <put name="body"   value="/list.jsp" />
+    </definition>
+
+    <definition name=".view.page" extends=".mainLayout">
+        <put name="title"  value="View Note" />
+        <put name="body"   value="/note.jsp" />
+    </definition>
+
+    <definition name=".edit.page" extends=".mainLayout">
+        <put name="title"  value="Edit Note" />
+        <put name="body"   value="/edit-note.jsp" />
+    </definition>
+
+    <definition name=".list.users" extends=".mainLayout">
+        <put name="title"  value="List Users" />
+        <put name="body"   value="/users.jsp" />
+    </definition>
+
+    <definition name=".edit.user" extends=".mainLayout">
+        <put name="title"  value="Edit User" />
+        <put name="body"   value="/edit-user.jsp" />
+    </definition>
+
+</tiles-definitions>
